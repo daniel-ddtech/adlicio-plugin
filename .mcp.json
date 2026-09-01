@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "adlicio": {
+      "type": "http",
+      "url": "https://mcp.tryadlicio.com/mcp",
+      "note": "Adlicio hosted MCP server for customer-voice research. Streamable HTTP with OAuth 2.1 and dynamic client registration, so there is no API key to paste. Sign in with an Adlicio account on first use."
+    }
+  }
+}

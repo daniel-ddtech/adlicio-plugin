@@ -1,0 +1,35 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "adlicio",
+  "description": "Adlicio customer-voice research for coding and research agents.",
+  "owner": {
+    "name": "Adlicio",
+    "email": "daniel@tryadlicio.com",
+    "url": "https://tryadlicio.com"
+  },
+  "plugins": [
+    {
+      "name": "adlicio",
+      "displayName": "Adlicio",
+      "description": "Give the agent real customer language. Scrape comments and reviews from Reddit, YouTube, Amazon, TikTok, Instagram, Trustpilot, app stores and 20+ other sources, search Reddit and YouTube, pull top-performing TikTok and Instagram videos with their hooks, find competitor ads in the Meta Ad Library, and build brand and voice-of-customer reports. Remote MCP with OAuth, no API keys to paste.",
+      "category": "research",
+      "tags": [
+        "research",
+        "marketing",
+        "scraping",
+        "reviews",
+        "reddit",
+        "voice-of-customer"
+      ],
+      "author": {
+        "name": "Adlicio",
+        "email": "daniel@tryadlicio.com",
+        "url": "https://tryadlicio.com"
+      },
+      "homepage": "https://tryadlicio.com/mcp",
+      "repository": "https://github.com/daniel-ddtech/adlicio-plugin",
+      "license": "MIT",
+      "source": "./"
+    }
+  ]
+}
