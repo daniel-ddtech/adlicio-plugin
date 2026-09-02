@@ -20,5 +20,16 @@
     "ad research"
   ],
   "skills": "./skills/",
-  "logo": "assets/logo-400.png"
+  "logo": "assets/logo-400.png",
+  "displayName": "Adlicio",
+  "publisher": "Adlicio",
+  "category": "research",
+  "tags": [
+    "research",
+    "marketing",
+    "scraping",
+    "reviews",
+    "voice-of-customer"
+  ],
+  "mcpServers": "./.mcp.json"
 }

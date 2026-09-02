@@ -20,5 +20,20 @@
     "ad research"
   ],
   "skills": "./skills/",
-  "logo": "assets/logo-400.png"
+  "logo": "assets/logo-400.png",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Adlicio",
+    "shortDescription": "Real customer language from Reddit, YouTube, TikTok, Amazon reviews and 20+ more sources.",
+    "longDescription": "Give the agent real customer language. Scrape comments and reviews from Reddit, YouTube, Amazon, TikTok, Instagram, Trustpilot, app stores and 20+ other sources, search Reddit and YouTube, pull top-performing TikTok and Instagram videos with their hooks, find competitor ads in the Meta Ad Library, and build brand and voice-of-customer reports. Remote MCP with OAuth, no API keys to paste.",
+    "developerName": "Adlicio",
+    "category": "research",
+    "websiteURL": "https://tryadlicio.com/mcp",
+    "logo": "assets/logo-400.png",
+    "defaultPrompt": [
+      "Research what people complain about when they buy running shoes online",
+      "Scrape the reviews on this Amazon listing and pull out the top objections",
+      "Find the top-performing TikTok hooks in the skincare niche right now"
+    ]
+  }
 }

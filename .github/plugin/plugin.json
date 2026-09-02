@@ -20,5 +20,6 @@
     "ad research"
   ],
   "skills": "./skills/",
-  "logo": "assets/logo-400.png"
+  "logo": "assets/logo-400.png",
+  "mcpServers": "./.mcp.json"
 }
