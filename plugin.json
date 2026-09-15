@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "adlicio",
-  "version": "1.0.0",
-  "description": "Give the agent real customer language. Scrape comments and reviews from Reddit, YouTube, Amazon, TikTok, Instagram, Trustpilot, app stores and 20+ other sources, search Reddit and YouTube, pull top-performing TikTok and Instagram videos with their hooks, find competitor ads in the Meta Ad Library, and build brand and voice-of-customer reports. Remote MCP with OAuth, no API keys to paste.",
+  "version": "1.0.1",
+  "description": "Research customer pain points and buying language from Reddit, reviews, and social comments. Find competitor ads, analyze creative hooks, and reuse source-linked research in your Adlicio workspace. Connects through hosted MCP with OAuth.",
   "author": {
     "name": "Adlicio",
     "email": "daniel@tryadlicio.com",

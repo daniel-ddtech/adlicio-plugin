@@ -47,9 +47,11 @@ account.
 | `find_scroll_stoppers` | Top-performing TikTok and Instagram videos with their on-screen hooks |
 | `find_creators` | The TikTok and Instagram accounts behind relevant niche videos |
 | `find_competitor_ads` | Live Meta Ad Library ads for a brand or niche |
+| `find_tv_ads`, `get_ad_transcript`, `inspect_landing_page` | Research TV ads, retrieve an ad transcript, or inspect a landing page |
 | `find_products` / `find_early_products` | Products and early-stage products in a niche |
 | `start_brand_research` / `get_brand_research` | Background brand research report |
 | `start_voc_report` / `get_voc_report` | Background voice-of-customer report |
+| `get_audience` | Read the brand's existing audience research |
 | `start_deep_scrape` / `get_deep_scrape` | Large multi-source scrape as a background job |
 | `create_brand`, `add_tracked_source`, `list_tracked_sources` | Set up ongoing listening |
 | `list_history`, `search_history`, `get_history_item` | Read past work without rescraping |
@@ -74,11 +76,19 @@ Do not claim support for a platform that is not listed.
 
 ## Access and credits
 
-The MCP server, the CLI, and the web app need the Adlicio All Access plan. The
-Pro plan covers the Chrome extension only. A free account can connect and see
-the tools, but most tools need credits. `search_reddit`, `search_youtube`, and a
-few others cost no credits. If a call fails on plan or credits, say which tool
-failed and what the user has to do, and do not retry in a loop.
+Full platform access requires Adlicio All Access. Other accounts may connect
+but have limited tool access. `whoami` reports the connected account's access
+and research balance. `search_reddit` costs 1 research credit;
+`search_youtube`, `whoami`, and reading stored history cost 0. Collection costs
+vary by source and method, and other research tools have their own costs.
+Read each tool's current description before metered work and keep usage within
+the user's request. If a call fails on access or credits, explain the result
+and do not retry in a loop or initiate a purchase.
+
+Creating brands, tracking sources, saving scripts, and starting background jobs
+change the user's Adlicio workspace. Use them only when needed for the user's
+requested work. Facebook group collection requires the user's configured
+Adlicio extension and their existing access to the group.
 
 ## Analysis contract
 

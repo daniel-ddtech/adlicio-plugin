@@ -18,7 +18,7 @@ brand and voice-of-customer reports.
 
 | Component | Path | What it is |
 | --- | --- | --- |
-| MCP server | `.mcp.json` | The hosted Adlicio server, about 27 tools |
+| MCP server | `mcp.json` (Agent Plugins), `.mcp.json` (host-specific manifests) | The hosted Adlicio server, 30 tools |
 | Skill | `skills/adlicio-customer-research/SKILL.md` | How to run a research pass and report it |
 
 ## The MCP server
@@ -31,12 +31,36 @@ Transport is streamable HTTP. Auth is OAuth 2.1 with dynamic client
 registration, so the host needs no API key and no environment variables. The
 first call opens a browser sign-in for the user's Adlicio account.
 
-Network endpoints called: `mcp.tryadlicio.com` only. No local shell, no
-filesystem access, no hooks, no postinstall scripts.
+Tool requests go to `mcp.tryadlicio.com`. Browser authentication also uses
+Adlicio's sign-in services and, if selected, Google sign-in. This package has no
+local executable, hooks, or install scripts. Requests and results are processed
+by Adlicio and the connected host; the hosted service may use collection
+providers to retrieve the requested sources.
 
 ## Install
 
-Claude Code:
+### Cursor and Grok Bot
+
+This package is prepared for marketplace review. It is not yet a published
+Cursor Marketplace listing. Once approved, search for **Adlicio** in the
+marketplace, add it, and complete Adlicio's browser authorization when prompted.
+
+For local testing in Cursor, clone this repository into
+`~/.cursor/plugins/local/adlicio`, reload Cursor, and check Customize for the
+`adlicio` MCP server and `adlicio-customer-research` skill. Local plugin imports
+must be allowed by your team. Grok Bot's in-app marketplace installation remains
+subject to review and availability.
+
+Try these prompts after connecting:
+
+- "Use Adlicio to check my account access and remaining research credits."
+- "Use Adlicio to find three Reddit discussions about choosing a CRM for a small business. Link each source."
+- "Use my existing Adlicio research history to summarize customer objections."
+
+The package includes a standard root `plugin.json` and `mcp.json`, plus a
+`.cursor-plugin/plugin.json` that explicitly references `.mcp.json`.
+
+### Claude Code
 
 ```bash
 /plugin marketplace add daniel-ddtech/adlicio-plugin
@@ -71,7 +95,8 @@ Scraping and search: `scrape_url`, `search_reddit`, `search_youtube`,
 `search_blind`, `research_topic`, `start_deep_scrape`, `get_deep_scrape`.
 
 Ad and creator research: `find_scroll_stoppers`, `find_creators`,
-`find_competitor_ads`, `find_products`, `find_early_products`, `save_script`.
+`find_competitor_ads`, `find_tv_ads`, `get_ad_transcript`, `inspect_landing_page`,
+`find_products`, `find_early_products`, `save_script`.
 
 Reports: `start_brand_research`, `get_brand_research`, `start_voc_report`,
 `get_voc_report`, `get_audience`.
@@ -90,10 +115,26 @@ posts and reels, TikTok videos, and Notion pages.
 
 ## Access and credits
 
-The MCP server, the CLI and the web app need the Adlicio All Access plan. The
-Pro plan covers the Chrome extension only. A free account can connect and see
-the tools, but most tools spend research credits. `search_reddit` and
-`search_youtube` cost no credits.
+Connect with your own Adlicio account. Full platform access requires All Access;
+other accounts may connect but have limited tool access. Check `whoami` for the
+connected account's access and research balance. The open-source plugin package
+is free; the hosted service has account and credit requirements.
+
+`search_reddit` costs 1 research credit; `search_youtube`, `whoami`, and reading
+stored history cost 0. Collection costs depend on the source and collection
+method. Other research tools have their own costs. Read each tool's current
+description before starting metered work, and keep usage within the user's
+request. A plan or credit error must be reported rather than retried in a loop.
+Facebook group collection requires the user's configured Adlicio Chrome
+extension and their existing access to the group.
+
+## Privacy, terms, and support
+
+- [Privacy policy](https://tryadlicio.com/privacy)
+- [Service terms](https://tryadlicio.com/terms)
+- Support: daniel@tryadlicio.com
+- The MIT license applies to this plugin package. Use of the hosted Adlicio
+  service is governed by Adlicio's service terms.
 
 ## Related
 
