@@ -4,7 +4,7 @@
   "description": "Adlicio customer-voice research for coding and research agents.",
   "owner": {
     "name": "Adlicio",
-    "email": "daniel@tryadlicio.com",
+    "email": "team@tryadlicio.com",
     "url": "https://tryadlicio.com"
   },
   "plugins": [
@@ -23,7 +23,7 @@
       ],
       "author": {
         "name": "Adlicio",
-        "email": "daniel@tryadlicio.com",
+        "email": "team@tryadlicio.com",
         "url": "https://tryadlicio.com"
       },
       "homepage": "https://tryadlicio.com/mcp",

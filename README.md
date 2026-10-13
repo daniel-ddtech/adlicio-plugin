@@ -18,8 +18,11 @@ brand and voice-of-customer reports.
 
 | Component | Path | What it is |
 | --- | --- | --- |
-| MCP server | `mcp.json` (Agent Plugins), `.mcp.json` (host-specific manifests) | The hosted Adlicio server, 30 tools |
+| MCP server | `mcp.json` (Agent Plugins), `.mcp.json` (host-specific manifests) | The hosted Adlicio server, about 40 tools |
+| Skill | `skills/adlicio-get-started/SKILL.md` | First run: account, credits and a first task |
 | Skill | `skills/adlicio-customer-research/SKILL.md` | How to run a research pass and report it |
+| Skill | `skills/adlicio-ad-angles/SKILL.md` | Ad angles, hooks and scripts that quote real customers |
+| Skill | `skills/adlicio-competitor-ads/SKILL.md` | Competitor ads, scripts and landing pages from the Meta Ad Library |
 
 ## The MCP server
 
@@ -31,11 +34,21 @@ Transport is streamable HTTP. Auth is OAuth 2.1 with dynamic client
 registration, so the host needs no API key and no environment variables. The
 first call opens a browser sign-in for the user's Adlicio account.
 
-Tool requests go to `mcp.tryadlicio.com`. Browser authentication also uses
-Adlicio's sign-in services and, if selected, Google sign-in. This package has no
-local executable, hooks, or install scripts. Requests and results are processed
-by Adlicio and the connected host; the hosted service may use collection
-providers to retrieve the requested sources.
+## What this plugin runs, sends and fetches
+
+- **Runs:** nothing on your machine. The package is Markdown and JSON only: no
+  local executable, hooks, commands, agents or install scripts.
+- **Sends:** the tool arguments Claude passes (for example a keyword or a page
+  URL) to `https://mcp.tryadlicio.com/mcp`, with your Adlicio sign-in token.
+  It does not send your conversation.
+- **Sign-in:** a browser OAuth sign-in to your Adlicio account at
+  `tryadlicio.com`, with Google sign-in if you choose it.
+- **Fetches:** the results of each tool call from the Adlicio server. The
+  hosted service retrieves the public pages you ask for, and may use
+  collection providers to do so.
+- **Stores:** results go to your Adlicio history. Tools that create brands,
+  save scripts or evidence, track sources or start background reports change
+  your Adlicio workspace. No tool deletes data or posts to the sites it reads.
 
 ## Install
 
@@ -60,7 +73,13 @@ Try these prompts after connecting:
 The package includes a standard root `plugin.json` and `mcp.json`, plus a
 `.cursor-plugin/plugin.json` that explicitly references `.mcp.json`.
 
-### Claude Code
+### Claude (claude.ai, desktop, Cowork and Claude Code)
+
+Once the listing is live, add **Adlicio** from the Claude directory. On
+claude.ai and in Cowork, open the plugin's **Connectors** tab, connect Adlicio
+and sign in. Claude Code connects to the server when the plugin loads.
+
+To install from this repository in Claude Code:
 
 ```bash
 /plugin marketplace add daniel-ddtech/adlicio-plugin
@@ -91,27 +110,37 @@ are at <https://tryadlicio.com/mcp>.
 
 ## Tools
 
+The server's tool list can change. Claude shows the current list when you
+connect.
+
 Scraping and search: `scrape_url`, `search_reddit`, `search_youtube`,
-`search_blind`, `research_topic`, `start_deep_scrape`, `get_deep_scrape`.
+`search_blind`, `search_hackernews`, `research_topic`, `get_video_transcript`,
+`start_deep_scrape`, `get_deep_scrape`.
 
 Ad and creator research: `find_scroll_stoppers`, `find_creators`,
-`find_competitor_ads`, `find_tv_ads`, `get_ad_transcript`, `inspect_landing_page`,
-`find_products`, `find_early_products`, `save_script`.
+`find_competitor_brands`, `find_competitor_ads`, `find_tv_ads`,
+`get_ad_transcript`, `inspect_landing_page`, `find_products`,
+`find_early_products`, `get_linkedin_profile`.
 
 Reports: `start_brand_research`, `get_brand_research`, `start_voc_report`,
 `get_voc_report`, `get_audience`.
 
-Listening and history: `create_brand`, `add_tracked_source`,
-`list_tracked_sources`, `list_history`, `search_history`, `get_history_item`,
-`scrape_facebook_group`, `get_extension_job`, `whoami`.
+Listening and Radar: `add_tracked_source`, `list_tracked_sources`,
+`create_radar`, `update_radar`, `check_radar`, `list_radar_posts`,
+`set_radar_post_status`.
 
-`scrape_url` supports Reddit, YouTube, Amazon, the Apple App Store, Google Play,
-Steam, Trustpilot, Reviews.io, Etsy, Walmart, Sephora, Ulta, eBay, Better
-Business Bureau, G2, AliExpress, TripAdvisor, Stack Exchange, Discourse, phpBB,
-XenForo, vBulletin, Invision Community, Hacker News, Quora, Product Hunt,
-Shopify and DTC product pages including Yotpo and Loox, Disqus comments, public
-Facebook posts, public LinkedIn posts, public Blind posts, public Instagram
-posts and reels, TikTok videos, and Notion pages.
+Workspace and history: `create_brand`, `save_script`, `save_evidence`,
+`list_history`, `search_history`, `get_history_item`, `scrape_facebook_group`,
+`get_extension_job`, `whoami`.
+
+`scrape_url` supports Amazon, Trustpilot, G2, Etsy, Walmart, eBay, Sephora,
+Ulta, AliExpress, TripAdvisor, Better Business Bureau, Google Maps, Reviews.io,
+Shopify and DTC product pages with Yotpo, Loox or Judge.me, the Apple App
+Store, Google Play, Steam, YouTube, TikTok, Instagram posts and reels, public
+Facebook posts, public LinkedIn posts, X posts, Reddit threads and profiles,
+Hacker News, Product Hunt, Quora, Stack Exchange, Blind, forum threads
+(Discourse, XenForo, vBulletin, phpBB, Invision), Disqus comments and Notion
+pages.
 
 ## Access and credits
 
@@ -120,9 +149,10 @@ other accounts may connect but have limited tool access. Check `whoami` for the
 connected account's access and research balance. The open-source plugin package
 is free; the hosted service has account and credit requirements.
 
-`search_reddit` costs 1 research credit; `search_youtube`, `whoami`, and reading
-stored history cost 0. Collection costs depend on the source and collection
-method. Other research tools have their own costs. Read each tool's current
+`whoami` and reading stored history cost 0 research credits. `scrape_url`
+costs 0 on direct sources such as YouTube, app stores, Steam and Shopify pages
+and usually 1 credit on paid collection sources. Other research tools state
+their own cost. Read each tool's current
 description before starting metered work, and keep usage within the user's
 request. A plan or credit error must be reported rather than retried in a loop.
 Facebook group collection requires the user's configured Adlicio Chrome
@@ -132,7 +162,7 @@ extension and their existing access to the group.
 
 - [Privacy policy](https://tryadlicio.com/privacy)
 - [Service terms](https://tryadlicio.com/terms)
-- Support: daniel@tryadlicio.com
+- Support: team@tryadlicio.com
 - The MIT license applies to this plugin package. Use of the hosted Adlicio
   service is governed by Adlicio's service terms.
 
@@ -147,4 +177,4 @@ extension and their existing access to the group.
 
 MIT. See [LICENSE](LICENSE).
 
-Contact: daniel@tryadlicio.com
+Contact: team@tryadlicio.com

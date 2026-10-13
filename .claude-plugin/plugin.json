@@ -1,10 +1,11 @@
 {
   "name": "adlicio",
-  "version": "1.0.1",
+  "displayName": "Adlicio",
+  "version": "1.1.0",
   "description": "Research customer pain points and buying language from Reddit, reviews, and social comments. Find competitor ads, analyze creative hooks, and reuse source-linked research in your Adlicio workspace. Connects through hosted MCP with OAuth.",
   "author": {
     "name": "Adlicio",
-    "email": "daniel@tryadlicio.com",
+    "email": "team@tryadlicio.com",
     "url": "https://tryadlicio.com"
   },
   "homepage": "https://tryadlicio.com/mcp",
@@ -20,6 +21,5 @@
     "ad research"
   ],
   "skills": "./skills/",
-  "logo": "assets/logo-400.png",
   "mcpServers": "./.mcp.json"
 }

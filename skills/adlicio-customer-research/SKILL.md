@@ -1,12 +1,15 @@
 ---
 name: adlicio-customer-research
 description: >-
-  Research what real people say about a topic, product, company, or problem
-  using the Adlicio MCP tools. Use for customer-voice research, pain-point
-  mining, review and comment analysis, competitive ad research, creator
-  sourcing, hook research, or when the user provides a supported discussion or
-  review URL and wants its comments. Do not use for general web crawling,
-  arbitrary page extraction, or documentation search.
+  Find out what real customers say, with verbatim quotes and source links,
+  using the Adlicio MCP tools. Use whenever the user asks what people on
+  Reddit, YouTube, TikTok, Amazon, review sites, app stores or forums say,
+  complain about, love, ask or object to about a product, brand, competitor,
+  niche or problem; for voice of customer research, pain points, objections and
+  review analysis; or when the user gives a review or discussion URL and wants
+  its comments. Use it instead of answering from memory. For ad hooks, angles
+  and scripts use adlicio-ad-angles; for competitor ads use
+  adlicio-competitor-ads. Not for general web crawling or documentation search.
 ---
 
 # Adlicio customer research
@@ -27,50 +30,61 @@ account.
 3. Reuse before you rescrape. `list_history`, `search_history`, and
    `get_history_item` read work the account already paid for.
 4. Choose the narrowest tool that answers the question:
-   - a topic with no known sources: `research_topic` or `search_reddit`
+   - a topic with no known sources: `research_topic` (searches, scrapes and
+     ranks Reddit in one call)
+   - pages to pick by hand: `search_reddit`, `search_youtube`, `search_blind`
+     or `search_hackernews`, then `scrape_url` on the best results
    - a specific URL the user gave you: `scrape_url`
-   - ad creative and hook questions: `find_scroll_stoppers` or
-     `find_competitor_ads`
+   - a complete pass: one discussion source plus one review source, because
+     discussion carries the problem in the customer's words and reviews carry
+     the verdict on existing products
 5. Start with a small limit, check relevance, then widen.
 6. Report sample size, source mix, limitations, and the actions the evidence
    supports.
+
+For ad angles and scripts built on the findings, use the `adlicio-ad-angles`
+skill. For competitor ads and funnels, use the `adlicio-competitor-ads` skill.
 
 ## Tools
 
 | Tool | Use |
 | --- | --- |
 | `scrape_url` | Extract comments or reviews from one supported URL |
-| `search_reddit` | Find Reddit threads for a query |
-| `search_youtube` | Find YouTube videos for a keyword |
-| `search_blind` | Find Blind (teamblind.com) posts for a keyword |
 | `research_topic` | Full Reddit search, scrape, and ranking pass on a topic |
-| `find_scroll_stoppers` | Top-performing TikTok and Instagram videos with their on-screen hooks |
-| `find_creators` | The TikTok and Instagram accounts behind relevant niche videos |
-| `find_competitor_ads` | Live Meta Ad Library ads for a brand or niche |
-| `find_tv_ads`, `get_ad_transcript`, `inspect_landing_page` | Research TV ads, retrieve an ad transcript, or inspect a landing page |
-| `find_products` / `find_early_products` | Products and early-stage products in a niche |
-| `start_brand_research` / `get_brand_research` | Background brand research report |
-| `start_voc_report` / `get_voc_report` | Background voice-of-customer report |
-| `get_audience` | Read the brand's existing audience research |
-| `start_deep_scrape` / `get_deep_scrape` | Large multi-source scrape as a background job |
-| `create_brand`, `add_tracked_source`, `list_tracked_sources` | Set up ongoing listening |
+| `search_reddit`, `search_youtube`, `search_blind`, `search_hackernews` | Find pages to scrape for a keyword |
+| `get_video_transcript` | The spoken words of one TikTok, Instagram or YouTube video |
+| `find_scroll_stoppers`, `find_creators` | Top TikTok and Instagram videos with their hooks, and the creators behind them |
+| `find_competitor_brands`, `find_competitor_ads` | Brands advertising in a niche, and their Meta Ad Library ads |
+| `get_ad_transcript`, `inspect_landing_page`, `find_tv_ads` | A Meta video ad's script, a landing page's copy, public TV ad catalogs |
+| `find_products`, `find_early_products` | Google Shopping listings in a niche |
+| `get_linkedin_profile` | One public LinkedIn profile |
+| `start_voc_report`, `get_voc_report` | Background voice-of-customer report from scrapes in history |
+| `create_brand`, `start_brand_research`, `get_brand_research` | Brand workspace and its background research |
+| `get_audience` | The audiences (curated source lists) the user built in Adlicio |
+| `start_deep_scrape`, `get_deep_scrape` | Every comment on one large YouTube video, as a background job |
+| `add_tracked_source`, `list_tracked_sources` | Sources Adlicio checks on a schedule |
+| `create_radar`, `update_radar`, `check_radar`, `list_radar_posts`, `set_radar_post_status` | Watch subreddits for new posts from people the user can help |
 | `list_history`, `search_history`, `get_history_item` | Read past work without rescraping |
-| `scrape_facebook_group`, `get_extension_job` | Queue a private Facebook group scrape through the user's Chrome extension |
-| `save_script` | Save an ad script back to the account |
+| `save_evidence`, `save_script` | Keep quotes from the conversation, or an approved ad script |
+| `scrape_facebook_group`, `get_extension_job` | Private Facebook group scrape through the user's Chrome extension |
 | `whoami` | Connected account, plan, and remaining credits |
 
 ## Supported sources for `scrape_url`
 
-Reddit threads and profiles, YouTube, Amazon, the Apple App Store, Google Play,
-Steam, Trustpilot, Reviews.io, Etsy, Walmart, Sephora, Ulta, eBay, Better
-Business Bureau, G2, AliExpress, TripAdvisor, Stack Exchange, Discourse, phpBB,
-XenForo, vBulletin, Invision Community, Hacker News, Quora, Product Hunt,
-Shopify and DTC product pages including Yotpo and Loox widgets, Disqus blog
-comments, public Facebook posts, public LinkedIn posts, public Blind posts,
-public Instagram posts and reels, TikTok videos, and Notion pages.
+Reviews: Amazon, Trustpilot, G2, Etsy, Walmart, eBay, Sephora, Ulta,
+AliExpress, TripAdvisor, Better Business Bureau, Google Maps, Reviews.io, and
+Shopify or other DTC product pages with Yotpo, Loox or Judge.me widgets.
 
-Instagram comment collection runs in the background. If the first call returns a
-pending status, call the same URL again a little later.
+App stores: the Apple App Store, Google Play and Steam.
+
+Comments: YouTube, TikTok, Instagram posts and reels, public Facebook posts,
+public LinkedIn posts, X posts, Reddit threads and profiles, Hacker News,
+Product Hunt, Quora, Stack Exchange, Blind, forum threads (Discourse, XenForo,
+vBulletin, phpBB, Invision), Disqus blog comments and Notion pages.
+
+Each platform needs a specific URL shape, which the `scrape_url` description
+lists. Instagram collection can run in the background: if the first call
+returns a pending status, call the same URL again a little later.
 
 Do not claim support for a platform that is not listed.
 
@@ -78,12 +92,13 @@ Do not claim support for a platform that is not listed.
 
 Full platform access requires Adlicio All Access. Other accounts may connect
 but have limited tool access. `whoami` reports the connected account's access
-and research balance. `search_reddit` costs 1 research credit;
-`search_youtube`, `whoami`, and reading stored history cost 0. Collection costs
-vary by source and method, and other research tools have their own costs.
-Read each tool's current description before metered work and keep usage within
-the user's request. If a call fails on access or credits, explain the result
-and do not retry in a loop or initiate a purchase.
+and research balance. Reading stored history costs 0. `scrape_url` costs 0 on
+direct sources such as YouTube, app stores, Steam and Shopify pages, and
+usually 1 credit on paid collection sources; a full Google Maps pull costs 4.
+Other research tools state their own cost. Read each tool's current
+description before metered work and keep usage within the user's request. If
+a call fails on access or credits, explain the result and do not retry in a
+loop or initiate a purchase.
 
 Creating brands, tracking sources, saving scripts, and starting background jobs
 change the user's Adlicio workspace. Use them only when needed for the user's
