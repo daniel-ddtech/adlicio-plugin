@@ -1,7 +1,7 @@
 {
   "name": "adlicio",
   "displayName": "Adlicio",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Research customer pain points and buying language from Reddit, reviews, and social comments. Find competitor ads, analyze creative hooks, and reuse source-linked research in your Adlicio workspace. Connects through hosted MCP with OAuth.",
   "author": {
     "name": "Adlicio",
@@ -9,6 +9,7 @@
     "url": "https://tryadlicio.com"
   },
   "homepage": "https://tryadlicio.com/mcp",
+  "privacyPolicyUrl": "https://tryadlicio.com/privacy",
   "repository": "https://github.com/daniel-ddtech/adlicio-plugin",
   "license": "MIT",
   "keywords": [
