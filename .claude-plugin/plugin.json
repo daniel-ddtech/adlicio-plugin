@@ -1,7 +1,7 @@
 {
   "name": "adlicio",
   "displayName": "Adlicio",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Research customer pain points and buying language from Reddit, reviews, and social comments. Find competitor ads, analyze creative hooks, and reuse source-linked research in your Adlicio workspace. Connects through hosted MCP with OAuth.",
   "author": {
     "name": "Adlicio",

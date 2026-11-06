@@ -23,6 +23,7 @@ brand and voice-of-customer reports.
 | Skill | `skills/adlicio-customer-research/SKILL.md` | How to run a research pass and report it |
 | Skill | `skills/adlicio-ad-angles/SKILL.md` | Ad angles, hooks and scripts that quote real customers |
 | Skill | `skills/adlicio-competitor-ads/SKILL.md` | Competitor ads, scripts and landing pages from the Meta Ad Library |
+| Skill | `skills/adlicio-advertorial/SKILL.md` | Static image ads that send people to an article that sells, built from customer quotes and competitor advertorials |
 | Skill | `skills/adlicio-forum-answers/SKILL.md` | Forum threads that rank on Google for your questions, with honest draft answers |
 | Skill | `skills/adlicio-video-plan/SKILL.md` | For creators: what to film next, from what the audience asks, for one video or a week |
 | Skill | `skills/adlicio-repurpose-video/SKILL.md` | For creators: Shorts with timestamps, X posts and community posts from one video's transcript |
